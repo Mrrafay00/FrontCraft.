@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>FrontCraft</title>
   <style>
+    /* ----------------------------------
+    BASE STYLES
+    ----------------------------------- */
     * {
       margin: 0;
       padding: 0;
@@ -49,25 +52,28 @@
       right: -10px;
     }
 
+    /* ----------------------------------
+    HEADER / NAVBAR
+    ----------------------------------- */
     header {
       width: 100%;
       padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: fixed; /* Fixed position */
+      position: fixed;
       top: 0;
       left: 0;
-      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-      backdrop-filter: blur(10px); /* Add blur effect */
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
       z-index: 1000;
       transition: background-color 0.3s ease;
     }
-    
+
     .brand {
       font-size: 1.8rem;
       font-weight: bold;
-      z-index: 1001; /* Ensure brand is above menu on mobile */
+      z-index: 1001;
     }
 
     .brand .front {
@@ -79,17 +85,17 @@
     }
 
     .menu-toggle {
-        display: none; /* Hidden by default */
-        font-size: 2rem;
-        cursor: pointer;
-        color: #757373;
-        z-index: 1001;
+      display: none; /* Hide on large screens */
+      font-size: 2rem;
+      cursor: pointer;
+      color: #757373;
+      z-index: 1001;
     }
-    
+
     nav {
-      display: flex;
+      display: flex; /* Show links on large screens */
     }
-    
+
     nav a {
       text-decoration: none;
       color: #757373;
@@ -104,16 +110,19 @@
       text-decoration-color: #999999;
     }
 
+    /* ----------------------------------
+    HERO SECTION
+    ----------------------------------- */
     .hero {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 100px 40px; /* Adjusted padding to account for fixed header */
+      padding: 100px 40px;
       min-height: 100vh;
       position: relative;
       z-index: 2;
       color: white;
-      text-align: left; /* Align text left for larger screens */
+      text-align: left;
     }
 
     .hero-text {
@@ -131,11 +140,11 @@
     }
 
     .hero-img {
-      display: flex; /* Ensures the image is a flex item */
+      display: flex;
       align-items: center;
       justify-content: center;
     }
-    
+
     .hero-img img {
       width: 400px;
       height: auto;
@@ -143,7 +152,9 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
-    /* About Section */
+    /* ----------------------------------
+    ABOUT SECTION
+    ----------------------------------- */
     .about {
       display: flex;
       align-items: center;
@@ -157,14 +168,13 @@
       z-index: 2;
     }
 
-    .about-img,
-    .about-text {
+    .about-img, .about-text {
       width: 50%;
     }
 
     .about-img img {
       width: 100%;
-      height: auto; /* Fix for the image height */
+      height: auto;
       border-radius: 12px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
       object-fit: contain;
@@ -174,8 +184,7 @@
       padding-left: 30px;
     }
 
-    .about-text h1,
-    .about-text p {
+    .about-text h1, .about-text p {
       margin-bottom: 15px;
     }
 
@@ -186,7 +195,9 @@
       margin-right: 3px;
     }
 
-    /* Services Section */
+    /* ----------------------------------
+    SERVICES SECTION
+    ----------------------------------- */
     .services {
       padding: 60px 40px;
       background: #757373;
@@ -204,18 +215,17 @@
 
     .services-container {
       display: flex;
-      justify-content: space-around; /* Use space-around to evenly space items */
-      align-items: stretch; /* Ensures cards have the same height */
-      flex-wrap: nowrap; /* Forces cards to stay on a single line */
-      overflow-x: auto; /* Adds horizontal scrolling if needed */
+      justify-content: space-around;
+      align-items: stretch;
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
       gap: 20px;
-      padding-bottom: 10px; /* Prevents scrollbar from covering content */
+      padding-bottom: 10px;
     }
 
     .service-box {
       background: #a8a7a7;
-      min-width: 280px; /* Prevents cards from getting too small */
-      flex: 1 1 auto; /* Allows cards to grow and shrink, but keeps them in a row */
+      flex: 1 1 calc(33.333% - 14px); /* Three cards per row on large screens */
+      min-width: 280px;
       padding: 30px 20px;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -246,66 +256,98 @@
       line-height: 1.5;
     }
 
-    /* Media Queries for Responsive Design */
-    @media (max-width: 991px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-        padding: 100px 40px;
-      }
-      .hero-text {
-        max-width: 100%;
-        margin-bottom: 40px;
-      }
-      .hero-img img {
-        width: 350px;
-      }
-      .about {
-        flex-direction: column;
-        padding: 40px 30px;
-      }
-      .about-img, .about-text {
-        width: 100%;
-      }
-      .about-text {
-        padding-left: 0;
-        margin-top: 30px;
-      }
-      header {
-        padding: 15px 30px;
-      }
+    /* ----------------------------------
+    MEDIA QUERIES (Responsive Logic)
+    ----------------------------------- */
+
+    /* LAPTOPS & TABLETS (1199px and below) */
+    @media (max-width: 1199px) {
+        .service-box {
+            flex: 1 1 calc(50% - 10px); /* Two cards per row */
+        }
     }
 
+    /* MOBILE DEVICES (767px and below) */
     @media (max-width: 767px) {
       .brand .front {
-        color: #757373; /* Match the rest of the text for visibility */
+        color: #757373;
       }
-
+      .menu-toggle {
+        display: block; /* Show menu toggle icon */
+      }
       nav {
-        display: none;
+        display: none; /* Hide navigation links */
         flex-direction: column;
         width: 100%;
         position: absolute;
-        top: 60px; /* Position below the header */
+        top: 60px;
         left: 0;
         background-color: #f1f1f1;
         padding: 20px;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       }
-
       nav a {
         margin: 10px 0;
         padding: 10px;
         text-align: center;
         border-bottom: 1px solid #ccc;
       }
-
       nav.active {
         display: flex;
       }
-      
+
+      .hero, .about {
+        flex-direction: column; /* Stack sections vertically */
+        text-align: center;
+        padding: 100px 30px;
+      }
+
+      .hero-text, .about-text {
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+
+      .hero-img, .about-img {
+        width: 100%;
+        padding-top: 20px;
+      }
+
+      .about-text {
+        padding-left: 0;
+      }
+
+      .hero-img img, .about-img img {
+        width: 300px;
+        height: auto;
+      }
+
+      .service-box {
+        flex: 1 1 100%; /* One card per row */
+      }
+    }
+
+    /* SMALL MOBILE DEVICES (479px and below) */
+    @media (max-width: 479px) {
+      .brand {
+        font-size: 1.5rem;
+      }
       .menu-toggle {
-        display: block; /* Show menu toggle on mobile */
+        font-size: 1.5rem;
+      }
+      .hero, .about {
+        padding: 80px 20px;
+      }
+      .hero-text h1, .about-text h1 {
+        font-size: 1.5rem;
+      }
+      .hero-text p, .about-text p {
+        font-size: 1rem;
+      }
+      .hero-img img, .about-img img {
+        width: 250px;
+      }
+      .about-text .urls {
+        font-size: 20px;
       }
     }
   </style>
@@ -335,12 +377,13 @@
         <p>Crafting modern web experiences with design & code.</p>
       </div>
       <div class="hero-img">
-        <img src="data:image/jpeg;base64,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" alt="Abdul Rafay Sheikh's workspace" />
+        <img src="data:image/jpeg;base64,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" alt="Abdul Rafay Sheikh's workspace" />
       </div>
     </section>
 
     <section class="about" id="about-section">
       <div class="about-img">
+        <!-- Note: Replace 'rafaypics.jpg' with a valid image URL for your professional headshot. -->
         <img src="rafaypics.jpg" alt="Abdul Rafay Sheikh's professional headshot" />
       </div>
       <div class="about-text">
